@@ -52,7 +52,9 @@ public class FicheroXML {
 	                Element elementoGrupo = (Element) nodo;
 	                int idGrupo = Integer.parseInt(elementoGrupo.getAttribute("id"));
 	                String nombreGrupo = elementoGrupo.getAttribute("nombre");
-	                Grupo grupo = new Grupo(idGrupo, nombreGrupo);
+	                Grupo grupo = new Grupo();
+	                grupo.setId_grupo(idGrupo);
+	                grupo.setNombre(nombreGrupo);
 
 	                NodeList listaAlumnos = elementoGrupo.getElementsByTagName("Alumno");
 	                for (int j = 0; j < listaAlumnos.getLength(); j++) {
@@ -65,9 +67,9 @@ public class FicheroXML {
 	                        elementoAlumno.getAttribute("genero").charAt(0),
 	                        elementoAlumno.getAttribute("ciclo"),
 	                        elementoAlumno.getAttribute("curso"),
-	                        Integer.parseInt(elementoAlumno.getAttribute("grupo"))
+	                        grupo // Se asigna el grupo correctamente
 	                    );
-	                    grupo.getAlumnos().add(alumno);
+	                    grupo.getAlumnos().add(alumno); // Agregamos el alumno al grupo
 	                }
 	                grupos.add(grupo);
 	            }
@@ -78,6 +80,7 @@ public class FicheroXML {
 	    }
 	    return grupos;
 	}
+
 	/**
      * Método para guardar una lista de grupos en un archivo XML .
      * @param Lista de grupos leída del XML

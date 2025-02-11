@@ -75,8 +75,11 @@ public class VistaConsola implements IVista{
 		String curso= sc.nextLine();
 		sc.nextLine();
 		System.out.print("Introduzca el grupo del alumno:"); 
-		int grupo= sc.nextInt();
+		int id_grupo= sc.nextInt();
 
+		Grupo grupo = new Grupo();
+	    grupo.setId_grupo(id_grupo);
+		
 		System.out.println();
 		System.out.println();
 		Alumno a=new Alumno( nombre,  apellidos,  fechaNacimiento, genero.charAt(0),  ciclo,  curso, grupo);

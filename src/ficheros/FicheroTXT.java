@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Alumno;
+import model.Grupo;
 
 public class FicheroTXT {
 
@@ -45,16 +46,20 @@ public class FicheroTXT {
 	        String line;
 	        while ((line = reader.readLine()) != null) {
 	            String[] datos = line.split(",");
+	            Grupo grupo = new Grupo();
+	            grupo.setId_grupo(Integer.parseInt(datos[7])); // Convertimos el ID del grupo
+
 	            Alumno alumno = new Alumno(
-	                Integer.parseInt(datos[0]),
-	                datos[1],
-	                datos[2],
-	                LocalDate.parse(datos[3]),
-	                datos[4].charAt(0),
-	                datos[5],
-	                datos[6],
-	                Integer.parseInt(datos[7])
+	                Integer.parseInt(datos[0]),  // NIA
+	                datos[1],                     // Nombre
+	                datos[2],                     // Apellidos
+	                LocalDate.parse(datos[3]),    // Fecha de nacimiento
+	                datos[4].charAt(0),           // Género
+	                datos[5],                     // Ciclo
+	                datos[6],                     // Curso
+	                grupo                         // Grupo (objeto, no String)
 	            );
+
 	            alumnos.add(alumno);
 	        }
 	    } catch (IOException e) {
