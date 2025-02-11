@@ -2,18 +2,25 @@ package model;
 
 import java.util.List;
 
+import jakarta.persistence.*;
+import jakarta.transaction.*;
+
 
 /**
  * Interface que define las operaciones CRUD para gestionar los alumnos y grupos en una base de datos.
  */
+//@Repository
+@Transactional
 public interface AlumnoDAO {
 
+	public static final EntityManager entityManager = null;
     /**
      * Inserta un alumno en la base de datos.
      * 
      * @param alumno El alumno a insertar.
      * @return El número de filas afectadas.
      */
+	
     int aniadirAlumno(Alumno alumno); // Insert
 
     /**
@@ -22,6 +29,7 @@ public interface AlumnoDAO {
      * @param alumnos La lista de alumnos a insertar.
      * @return El número de filas afectadas.
      */
+    
     int aniadirAlumnos(List<Alumno> alumnos); // Insert
 
     /**
@@ -30,6 +38,7 @@ public interface AlumnoDAO {
      * @param grupo El grupo a insertar.
      * @return El número de filas afectadas.
      */
+    
     int aniadirGrupo(Grupo grupo); // Insert
 
     /**
@@ -38,6 +47,7 @@ public interface AlumnoDAO {
      * @param alumnos La lista de grupos a insertar.
      * @return El número de filas afectadas.
      */
+    
     int aniadirGrupos(List<Grupo> alumnos); // Insert
 
     /**
@@ -46,6 +56,7 @@ public interface AlumnoDAO {
      * 
      * @return La lista de alumnos o null en caso de error.
      */
+    
     List<Alumno> obtenerTodosLosAlumnos(); // Get
 
     /**
@@ -53,6 +64,7 @@ public interface AlumnoDAO {
      * 
      * @return La lista de grupos.
      */
+    
     List<Grupo> obtenerTodosLosGrupos();
 
     /**
@@ -61,6 +73,7 @@ public interface AlumnoDAO {
      * @param nia El NIA del alumno.
      * @return El alumno correspondiente al NIA.
      */
+    
     Alumno obtenerAlumnoPorNIA(int nia);
 
     
@@ -73,6 +86,7 @@ public interface AlumnoDAO {
      * @param nombre El nuevo nombre del alumno.
      * @return El número de filas afectadas.
      */
+    
     int modificarNombrePorNia(int nia, String nombre); // Update
 
     
@@ -82,6 +96,7 @@ public interface AlumnoDAO {
      * 
      * @param nia El NIA del alumno a eliminar.
      */
+    
     void eliminarPorNia(int nia); // Delete NIA
 
     /**
@@ -89,6 +104,7 @@ public interface AlumnoDAO {
      * 
      * @param curso El curso cuyos alumnos se eliminarán.
      */
+    
     void eliminarPorCurso(String curso); // Delete Curso
 
     /**
@@ -96,5 +112,6 @@ public interface AlumnoDAO {
      * 
      * @return Una lista de cursos.
      */
+    
     List<String> obtenerCursos();
 }
