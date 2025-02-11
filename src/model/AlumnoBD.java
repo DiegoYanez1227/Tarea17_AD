@@ -31,14 +31,14 @@ public class AlumnoBD implements AlumnoDAO{
 		try(Connection conexion= MyDataSource.getConnection();
 				PreparedStatement sentencia = conexion.prepareStatement(sql)){
 
-			sentencia.setString(1, alumno.getNombre());
-			sentencia.setString(2, alumno.getApellidos());
-			sentencia.setDate(3, Date.valueOf(alumno.getFechaNacimiento()));
-			sentencia.setString(4, String.valueOf(alumno.getGenero()));
-			sentencia.setString(5, alumno.getCiclo());
-			sentencia.setString(4, alumno.getCurso());
-			sentencia.setInt(5, alumno.getGrupo());
-
+			   sentencia.setString(1, alumno.getNombre());
+		        sentencia.setString(2, alumno.getApellidos());
+		        sentencia.setDate(3, Date.valueOf(alumno.getFechaNacimiento()));
+		        sentencia.setString(4, String.valueOf(alumno.getGenero()));
+		        sentencia.setString(5, alumno.getCiclo());
+		        sentencia.setString(6, alumno.getCurso());
+		        sentencia.setInt(7, alumno.getGrupo().getId_grupo());
+		        
 			return result= sentencia.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -233,7 +233,10 @@ public class AlumnoBD implements AlumnoDAO{
 		alumno.setGenero(genero.charAt(0));
 		alumno.setCiclo(rs.getString("ciclo"));
 		alumno.setCurso(rs.getString("curso"));
-		alumno.setGrupo(Integer.parseInt(rs.getString("grupo")));
+		int idGrupo = rs.getInt("id_grupo");
+		Grupo grupo = new Grupo();
+	    grupo.setId_grupo(idGrupo);
+	    alumno.setGrupo(grupo);
 	}
 	
 	private void generarGrupo(ResultSet rs, Grupo grupo) throws SQLException {

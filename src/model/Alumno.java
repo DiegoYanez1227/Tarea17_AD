@@ -32,12 +32,13 @@ public class Alumno {
     @Column(nullable = false, length = 10)
     private String curso;
     
-    @Column(nullable = false)
-    private int grupo;
+    @ManyToOne
+    @JoinColumn(name = "id_grupo", nullable = false)
+    private Grupo grupo;
     
     public Alumno() {}
 
-	public Alumno(String nombre, String apellidos, LocalDate fechaNacimiento,char genero, String ciclo, String curso, int grupo) {
+	public Alumno(String nombre, String apellidos, LocalDate fechaNacimiento,char genero, String ciclo, String curso, Grupo grupo) {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.fechaNacimiento = fechaNacimiento;
@@ -46,7 +47,7 @@ public class Alumno {
 		this.curso = curso;
 	}
 	
-	public Alumno(int nia, String nombre, String apellidos, LocalDate fechaNacimiento,char genero, String ciclo, String curso, int grupo) {
+	public Alumno(int nia, String nombre, String apellidos, LocalDate fechaNacimiento,char genero, String ciclo, String curso, Grupo grupo) {
 		this(nombre,apellidos,fechaNacimiento,genero, ciclo, curso, grupo);
 		this.nia=nia;
 	}
@@ -120,12 +121,12 @@ public class Alumno {
 		this.curso = curso;
 	}
 
-	public int getGrupo() {
+	public Grupo getGrupo() {
 		return grupo;
 	}
 
 
-	public void setGrupo(int grupo) {
+	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
 	}
 

@@ -3,13 +3,25 @@ package model;
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name = "grupos")
 public class Grupo {
-	
-	private Integer id_grupo;
-	private String nombre;
-	private List<Alumno> alumnos;
-	
-	public Grupo() {}
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_grupo")
+    private Integer id_grupo;
+    
+    @Column(nullable = false, length = 50)
+    private String nombre;
+    
+    @OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Alumno> alumnos;
+    
+    public Grupo() {}
 
 	public Grupo(String nombre) {
 		this.nombre = nombre;
