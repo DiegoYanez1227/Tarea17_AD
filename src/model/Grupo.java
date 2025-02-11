@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import jakarta.persistence.*;
 
-
+@Embeddable
 @Entity
 @Table(name = "grupos")
 public class Grupo {
