@@ -4,26 +4,38 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Alumno implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Integer nia;
-	private String nombre;
-	private String apellidos;
-	private LocalDate fechaNacimiento;
-	private char genero;
-	private String ciclo;
-	private String curso;
-	private int grupo;
-	
-	
-	public Alumno() {
-		
-	}
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "alumnos")
+public class Alumno {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer nia;
+    
+    @Column(nullable = false, length = 50)
+    private String nombre;
+    
+    @Column(nullable = false, length = 50)
+    private String apellidos;
+    
+    @Column(name = "fecha_nacimiento", nullable = false)
+    private LocalDate fechaNacimiento;
+    
+    @Column(nullable = false, length = 1)
+    private char genero;
+    
+    @Column(nullable = false, length = 50)
+    private String ciclo;
+    
+    @Column(nullable = false, length = 10)
+    private String curso;
+    
+    @Column(nullable = false)
+    private int grupo;
+    
+    public Alumno() {}
 
 	public Alumno(String nombre, String apellidos, LocalDate fechaNacimiento,char genero, String ciclo, String curso, int grupo) {
 		this.nombre = nombre;
@@ -116,29 +128,7 @@ public class Alumno implements Serializable{
 	public void setGrupo(int grupo) {
 		this.grupo = grupo;
 	}
-	
 
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Alumno other = (Alumno) obj;
-		return Objects.equals(apellidos, other.apellidos) && Objects.equals(ciclo, other.ciclo)
-				&& Objects.equals(curso, other.curso) && Objects.equals(fechaNacimiento, other.fechaNacimiento)
-				&& genero == other.genero && Objects.equals(grupo, other.grupo) && Objects.equals(nia, other.nia)
-				&& Objects.equals(nombre, other.nombre);
-	}
-
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(apellidos, ciclo, curso, fechaNacimiento, genero, grupo, nia, nombre);
-	}
 
 
 	@Override
