@@ -31,25 +31,68 @@ public class AlumnoHibernate implements AlumnoDAO{
 			}
 		}
 		return 0;
-
 	}
 
 	@Override
 	public int aniadirAlumnos(List<Alumno> alumnos) {
-		// TODO Auto-generated method stub
-		return 0;
+		int contador=0;
+		if(alumnos!=null) {
+			Transaction transaction = session.beginTransaction();  
+			try {
+				for (Alumno alumno : alumnos) {
+					session.persist(alumno);	
+					contador++;
+				}
+				transaction.commit();
+			} catch (Exception e) {
+				transaction.rollback();  
+				e.printStackTrace();
+			}
+			if (contador % 50 == 0) {  
+			    session.flush();  
+			    session.clear();
+			}
+		}
+		return contador;
 	}
 
 	@Override
 	public int aniadirGrupo(Grupo grupo) {
-		// TODO Auto-generated method stub
+		if(grupo!=null) {
+			Transaction transaction = session.beginTransaction();  
+			try {
+				session.persist(grupo);
+				transaction.commit(); 
+				return 1;
+			} catch (Exception e) {
+				transaction.rollback();  
+				e.printStackTrace();
+			}
+		}
 		return 0;
 	}
 
 	@Override
-	public int aniadirGrupos(List<Grupo> alumnos) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int aniadirGrupos(List<Grupo> grupos) {
+		int contador=0;
+		if(grupos!=null) {
+			Transaction transaction = session.beginTransaction();  
+			try {
+				for (Grupo grupo : grupos) {
+					session.persist(grupo);	
+					contador++;
+				}
+				transaction.commit();
+			} catch (Exception e) {
+				transaction.rollback();  
+				e.printStackTrace();
+			}
+			if (contador % 50 == 0) {  
+			    session.flush();  
+			    session.clear();
+			}
+		}
+		return contador;
 	}
 
 	@Override
