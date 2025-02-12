@@ -48,7 +48,7 @@ public interface AlumnoDAO {
      * @return El número de filas afectadas.
      */
     
-    int aniadirGrupos(List<Grupo> alumnos); // Insert
+    int aniadirGrupos(List<Grupo> grupos); // Insert
 
     /**
      * Obtiene la lista de todos los alumnos desde la base de datos.
