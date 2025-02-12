@@ -96,6 +96,7 @@ public class Controlador {
 				Logger.error("El número introducido no se corresponde con una instrucción válida");
 			}
 		} while (opcion != 0);
+		modelo.cerrarSession();
 	}
 
 

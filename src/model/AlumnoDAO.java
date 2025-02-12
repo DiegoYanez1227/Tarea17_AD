@@ -114,4 +114,7 @@ public interface AlumnoDAO {
      */
     
     List<String> obtenerCursos();
+    
+    
+    public void cerrarSession();
 }
