@@ -32,7 +32,7 @@ public class Alumno {
     @Column(nullable = false, length = 10)
     private String curso;
     
-    @ManyToOne
+    @ManyToOne(fetch= FetchType.EAGER)
     @JoinColumn(name = "id_grupo", nullable = false)
     private Grupo grupo;
     

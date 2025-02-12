@@ -177,6 +177,7 @@ public class AlumnoHibernate implements AlumnoDAO{
 		return null;
 	}
 	
+	@Override
 	public void cerrarSession() {
 		session.close();
 		sf.close();

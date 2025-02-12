@@ -18,7 +18,7 @@ public class Grupo {
     @Column(nullable = false, length = 50)
     private String nombre;
     
-    @OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Alumno> alumnos;
     
     public Grupo() {}
