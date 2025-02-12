@@ -176,5 +176,10 @@ public class AlumnoHibernate implements AlumnoDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public void cerrarSession() {
+		session.close();
+		sf.close();
+	}
 
 }
