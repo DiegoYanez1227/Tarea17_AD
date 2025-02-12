@@ -24,11 +24,7 @@ public class Controlador {
 	 * Método principal que inicia la ejecución del programa.
 	 * Crea un modelo de datos (AlumnoDAO) y una vista (IVista), y luego ejecuta el controlador.
 	 */
-	public static void main(String[] args) {
-		AlumnoDAO modelo1 = new AlumnoBD();
-		IVista vista = new VistaConsola();
-		new Controlador().ejecutar(modelo1, vista);
-	}
+
 
 	/**
 	 * Ejecuta el controlador, mostrando el menú y procesando las opciones seleccionadas por el usuario.

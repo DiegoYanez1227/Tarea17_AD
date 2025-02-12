@@ -49,10 +49,5 @@
 	    <artifactId>gson</artifactId>
 	    <version>2.12.1</version>
 	</dependency>
-	<dependency>
-		<groupId>EjemploHIbernate</groupId>
-		<artifactId>EjemploHIbernate</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
   </dependencies>
 </project>
