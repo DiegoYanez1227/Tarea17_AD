@@ -2,12 +2,36 @@ package model;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
 public class AlumnoHibernate implements AlumnoDAO{
+
+	StandardServiceRegistry sr= new StandardServiceRegistryBuilder().configure().build();
+
+	SessionFactory sf= new MetadataSources(sr).buildMetadata().buildSessionFactory();
+
+	Session session= sf.openSession();
 
 	@Override
 	public int aniadirAlumno(Alumno alumno) {
-		// TODO Auto-generated method stub
+		if(alumno!=null) {
+			Transaction transaction = session.beginTransaction();  
+			try {
+				session.persist(alumno);
+				transaction.commit(); 
+				return 1;
+			} catch (Exception e) {
+				transaction.rollback();  
+				e.printStackTrace();
+			}
+		}
 		return 0;
+
 	}
 
 	@Override
@@ -67,13 +91,13 @@ public class AlumnoHibernate implements AlumnoDAO{
 	@Override
 	public void eliminarPorNia(int nia) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void eliminarPorCurso(String curso) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
