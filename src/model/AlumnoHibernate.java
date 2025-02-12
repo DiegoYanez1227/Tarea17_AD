@@ -1,7 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -49,8 +52,8 @@ public class AlumnoHibernate implements AlumnoDAO{
 				e.printStackTrace();
 			}
 			if (contador % 50 == 0) {  
-			    session.flush();  
-			    session.clear();
+				session.flush();  
+				session.clear();
 			}
 		}
 		return contador;
@@ -88,8 +91,8 @@ public class AlumnoHibernate implements AlumnoDAO{
 				e.printStackTrace();
 			}
 			if (contador % 50 == 0) {  
-			    session.flush();  
-			    session.clear();
+				session.flush();  
+				session.clear();
 			}
 		}
 		return contador;
@@ -97,20 +100,45 @@ public class AlumnoHibernate implements AlumnoDAO{
 
 	@Override
 	public List<Alumno> obtenerTodosLosAlumnos() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Alumno> listaAlumnos=null;
+
+		try {
+			listaAlumnos= new ArrayList<>();
+			listaAlumnos=session.createQuery("FROM alumno",Alumno.class).list();
+		}catch(Exception e) {
+			e.printStackTrace();
+			//TODO Logger
+			return null;
+		}
+		return listaAlumnos;
 	}
 
 	@Override
 	public List<Grupo> obtenerTodosLosGrupos() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Grupo> listaGrupos=null;
+
+		try {
+			listaGrupos= new ArrayList<Grupo>();
+			listaGrupos=session.createQuery("FROM grupo",Grupo.class).list();
+		}catch(Exception e) {
+			e.printStackTrace();
+			//TODO Logger
+			return null;
+		}
+		return listaGrupos;
 	}
 
 	@Override
 	public Alumno obtenerAlumnoPorNIA(int nia) {
-		// TODO Auto-generated method stub
-		return null;
+		Alumno alumno;
+		try {
+			alumno = (Alumno)session.getReference(Alumno.class, (int)nia);
+			return alumno;
+		}catch(ObjectNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 
 	@Override
