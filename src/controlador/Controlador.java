@@ -20,10 +20,6 @@ public class Controlador {
 	FicheroTXT ficheroTXT = new FicheroTXT();
 	FicheroJSON ficheroJSON = new FicheroJSON();
 
-	/**
-	 * Método principal que inicia la ejecución del programa.
-	 * Crea un modelo de datos (AlumnoDAO) y una vista (IVista), y luego ejecuta el controlador.
-	 */
 
 
 	/**
