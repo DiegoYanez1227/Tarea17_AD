@@ -243,10 +243,10 @@ public class Controlador {
 	 * @param vista La vista que interactúa con el usuario.
 	 */
 	private void guardarEnFicheroJSON(AlumnoDAO modelo, IVista vista) {
-		List<Grupo> gruposParaFichero = modelo.obtenerTodosLosGrupos();
-		if (gruposParaFichero != null) {
-			String rutaGrupos = ficheroJSON.generarFichero(gruposParaFichero);
-			vista.mostrarRutaDeFichero(rutaGrupos);
+		List<Alumno> alumnosParaFichero = modelo.obtenerTodosLosAlumnos();
+		if (alumnosParaFichero != null) {
+			String ruta = ficheroJSON.generarFichero(alumnosParaFichero);
+			vista.mostrarRutaDeFichero(ruta);
 			Logger.info("Se ha podido leer los alumnos de la base de datos e introducirlo dentro del fichero JSON.");
 		} else {
 			vista.mostrarMensaje("No se ha podido exportar los datos dentro de un fichero JSON.");
@@ -260,11 +260,11 @@ public class Controlador {
 	 * @param vista La vista que interactúa con el usuario.
 	 */
 	private void leerDesdeFicheroJSON(AlumnoDAO modelo, IVista vista) {
-		String rutaGrupos = vista.pedirRuta();
-		List<Grupo> gruposDesdeFichero = ficheroJSON.leerFichero(rutaGrupos);
-		if (gruposDesdeFichero != null) {
-			vista.mostrarGrupos(gruposDesdeFichero);
-			modelo.aniadirGrupos(gruposDesdeFichero);
+		String ruta = vista.pedirRuta();
+		List<Alumno> alumnosDesdeFichero = ficheroJSON.leerFichero(ruta);
+		if (alumnosDesdeFichero != null) {
+			vista.mostrarAlumnos(alumnosDesdeFichero);
+			modelo.aniadirAlumnos(alumnosDesdeFichero);
 			vista.mostrarMensaje("Los anteriores se han guardado correctamente dentro de la base de datos desde el fichero de JSON.");
 			Logger.info("Se ha podido leer del fichero JSON e introducirlo dentro de la base de datos.");
 		} else {
