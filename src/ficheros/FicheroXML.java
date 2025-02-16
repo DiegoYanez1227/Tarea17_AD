@@ -18,17 +18,17 @@ import java.time.LocalDate;
 import model.Alumno;
 import model.Grupo;
 
-public class FicheroXML {
+public class FicheroXML implements FicherosInterface{
 	
 	private static final String RUTA_XML = "grupos.xml";
 
-	public String generarFichero(List<Grupo> grupos) {
-        guardarComoXML(grupos);
+	public String generarFichero(List<Alumno> alumnos) {
+        guardarComoXML(alumnos);
         return RUTA_XML;
     }
 
 	
-	public List<Grupo> leerFichero(String ruta) {
+	public List<Alumno> leerFichero(String ruta) {
         return leerFicheroXML(ruta);
     }
 	/**
@@ -37,8 +37,8 @@ public class FicheroXML {
      * @return Lista de grupos leída del XML
      */
 
-	private List<Grupo> leerFicheroXML(String ruta) {
-	    List<Grupo> grupos = new ArrayList<>();
+	private List<Alumno> leerFicheroXML(String ruta) {
+	    List<Alumno> grupos = new ArrayList<>();
 	    try {
 	        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -71,7 +71,7 @@ public class FicheroXML {
 	                    );
 	                    grupo.getAlumnos().add(alumno); // Agregamos el alumno al grupo
 	                }
-	                grupos.add(grupo);
+	               // grupos.add(alumno);
 	            }
 	        }
 	    } catch (Exception e) {
@@ -86,7 +86,7 @@ public class FicheroXML {
      * @param Lista de grupos leída del XML
      * @return Ruta del archivo XML
      */
-	private void guardarComoXML(List<Grupo> grupos) {
+	private void guardarComoXML(List<Alumno> alumnos) {
 	    try {
 	        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder builder = factory.newDocumentBuilder();
@@ -95,26 +95,26 @@ public class FicheroXML {
 	        Element rootElement = doc.createElement("Grupos");
 	        doc.appendChild(rootElement);
 
-	        for (Grupo grupo : grupos) {
+	        for (Alumno alumno : alumnos) {
 	            Element grupoElement = doc.createElement("Grupo");
 	            rootElement.appendChild(grupoElement);
 
-	            grupoElement.setAttribute("id", String.valueOf(grupo.getId_grupo()));
-	            grupoElement.setAttribute("nombre", grupo.getNombre());
-
-	            for (Alumno alumno : grupo.getAlumnos()) {
-	                Element alumnoElement = doc.createElement("Alumno");
-	                grupoElement.appendChild(alumnoElement);
-
-	                alumnoElement.setAttribute("nia", String.valueOf(alumno.getNia()));
-	                alumnoElement.setAttribute("nombre", alumno.getNombre());
-	                alumnoElement.setAttribute("apellidos", alumno.getApellidos());
-	                alumnoElement.setAttribute("fechaNacimiento", alumno.getFechaNacimiento().toString());
-	                alumnoElement.setAttribute("genero", String.valueOf(alumno.getGenero()));
-	                alumnoElement.setAttribute("ciclo", alumno.getCiclo());
-	                alumnoElement.setAttribute("curso", alumno.getCurso());
-	                alumnoElement.setAttribute("grupo", String.valueOf(alumno.getGrupo()));
-	            }
+//	            grupoElement.setAttribute("id", String.valueOf(alumno.getId_grupo()));
+//	            grupoElement.setAttribute("nombre", alumno.getNombre());
+//
+//	            for (Alumno alumno : alumno.getAlumnos()) {
+//	                Element alumnoElement = doc.createElement("Alumno");
+//	                grupoElement.appendChild(alumnoElement);
+//
+//	                alumnoElement.setAttribute("nia", String.valueOf(alumno.getNia()));
+//	                alumnoElement.setAttribute("nombre", alumno.getNombre());
+//	                alumnoElement.setAttribute("apellidos", alumno.getApellidos());
+//	                alumnoElement.setAttribute("fechaNacimiento", alumno.getFechaNacimiento().toString());
+//	                alumnoElement.setAttribute("genero", String.valueOf(alumno.getGenero()));
+//	                alumnoElement.setAttribute("ciclo", alumno.getCiclo());
+//	                alumnoElement.setAttribute("curso", alumno.getCurso());
+//	                alumnoElement.setAttribute("grupo", String.valueOf(alumno.getGrupo()));
+//	            }
 	        }
 
 	        TransformerFactory transformerFactory = TransformerFactory.newInstance();

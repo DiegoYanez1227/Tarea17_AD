@@ -9,9 +9,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import model.Alumno;
 import model.Grupo;
 
-public class FicheroJSON {
+public class FicheroJSON implements FicherosInterface{
 
 	private static final String RUTA_JSON = "grupos.json";
 
@@ -20,10 +21,10 @@ public class FicheroJSON {
      * @param Lista de grupos leída del JSON
      * @return Ruta del archivo JSON
      */
-	public String generarFichero(List<Grupo> grupos) {
+	public String generarFichero(List<Alumno> alumnos) {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (FileWriter writer = new FileWriter(RUTA_JSON)) {
-            gson.toJson(grupos, writer);
+            gson.toJson(alumnos, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,10 +50,10 @@ public class FicheroJSON {
      * @param ruta Ruta del archivo JSON
      * @return Lista de grupos leída del JSON
      */
-	public List<Grupo> leerFichero(String ruta) {
+	public List<Alumno> leerFichero(String ruta) {
         try (FileReader reader = new FileReader(ruta)) {
             Gson gson = new Gson();
-            return gson.fromJson(reader, new TypeToken<List<Grupo>>() {}.getType());
+            return gson.fromJson(reader, new TypeToken<List<Alumno>>() {}.getType());
         } catch (IOException e) {
             e.printStackTrace();
             return null;

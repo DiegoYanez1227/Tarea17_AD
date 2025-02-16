@@ -12,7 +12,7 @@ import java.util.List;
 import model.Alumno;
 import model.Grupo;
 
-public class FicheroTXT {
+public class FicheroTXT implements FicherosInterface{
 
 	private static final String RUTA_TXT = "grupos.txt";
 	

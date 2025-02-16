@@ -11,7 +11,7 @@ import java.util.List;
 
 import model.Alumno;
 
-public class FicheroBinario {
+public class FicheroBinario implements FicherosInterface{
 
 	private static final String RUTA_BINARIO = "grupos.dat";
 
