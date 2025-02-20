@@ -323,11 +323,6 @@ public class AlumnoBD implements AlumnoDAO{
 		return grupos;
 	}
 
-	@Override
-	public void cerrarSession() {
-		//NO CONTIENE NADA ESTE METODO YA QUE NO ES NECESARIO CON JDBC
-		
-	}
 
 
 
