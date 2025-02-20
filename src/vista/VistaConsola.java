@@ -12,9 +12,11 @@ import java.util.stream.IntStream;
 
 import model.Alumno;
 import model.Grupo;
+import model.*;
 
 public class VistaConsola implements IVista{
 
+	AlumnoHibernate modelo= new AlumnoHibernate();
 	private Scanner sc;
 	private KeyboardReader reader;
 
@@ -77,8 +79,7 @@ public class VistaConsola implements IVista{
 		System.out.print("Introduzca el grupo del alumno:"); 
 		int id_grupo= sc.nextInt();
 
-		Grupo grupo = new Grupo();
-	    grupo.setId_grupo(id_grupo);
+		Grupo grupo =modelo.obtenerGrupo(id_grupo);
 		
 		System.out.println();
 		System.out.println();

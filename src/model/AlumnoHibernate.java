@@ -165,5 +165,12 @@ public class AlumnoHibernate implements AlumnoDAO{
 			return session.createQuery("SELECT DISTINCT curso FROM Alumno", String.class).list();
 		}
 	}
-
+	
+	public Grupo obtenerGrupo(int id_grupo) {
+	    try (Session session = sessionFactory.openSession()) {
+	        return session.createSelectionQuery("FROM Grupo WHERE id = :id_grupo", Grupo.class)
+	                      .setParameter("id_grupo", id_grupo)
+	                      .uniqueResult();
+	    }
+	}
 }
