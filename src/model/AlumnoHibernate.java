@@ -15,6 +15,10 @@ import org.hibernate.query.MutationQuery;
 import org.hibernate.query.Query;
 import org.hibernate.query.SelectionQuery;
 
+import pojo.Alumno;
+import pojo.Grupo;
+import pool.HibernateUtil;
+
 public class AlumnoHibernate implements AlumnoDAO{
 
 

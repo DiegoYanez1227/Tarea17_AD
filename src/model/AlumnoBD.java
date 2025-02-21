@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.apache.logging.log4j.*;
 
+import pojo.Alumno;
+import pojo.Grupo;
 import pool.MyDataSource;
 
 public class AlumnoBD implements AlumnoDAO{

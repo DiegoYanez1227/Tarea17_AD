@@ -1,12 +1,12 @@
-package model;
+package pool;
 
 import org.hibernate.SessionFactory; 
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import model.Alumno;
-import model.Grupo;
+import pojo.Alumno;
+import pojo.Grupo;
 
 
 public class HibernateUtil {

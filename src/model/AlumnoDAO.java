@@ -4,6 +4,8 @@ import java.util.List;
 
 import jakarta.persistence.*;
 import jakarta.transaction.*;
+import pojo.Alumno;
+import pojo.Grupo;
 
 
 /**

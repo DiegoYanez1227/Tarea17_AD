@@ -10,9 +10,9 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.stream.IntStream;
 
-import model.Alumno;
-import model.Grupo;
 import model.*;
+import pojo.Alumno;
+import pojo.Grupo;
 
 public class VistaConsola implements IVista{
 

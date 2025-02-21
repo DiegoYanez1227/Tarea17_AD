@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 
 import ficheros.*;
 import model.*;
+import pojo.Alumno;
+import pojo.Grupo;
 import vista.*;
 /**
  * Clase Controlador que maneja la interacción entre la vista y el modelo.

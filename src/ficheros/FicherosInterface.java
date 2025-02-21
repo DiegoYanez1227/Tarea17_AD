@@ -2,7 +2,7 @@ package ficheros;
 
 import java.util.List;
 
-import model.Alumno;
+import pojo.Alumno;
 
 public interface FicherosInterface {
 	String generarFichero(List<Alumno> alumnos);
