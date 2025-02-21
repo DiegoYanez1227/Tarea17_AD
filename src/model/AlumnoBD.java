@@ -246,7 +246,7 @@ public class AlumnoBD implements AlumnoDAO{
 	}
 
 	@Override
-	public Alumno obtenerAlumnoPorNIA(int id_grupo) {
+	public Alumno obtenerAlumnoPorNIA(int nia) {
 		String sql = "SELECT nia, nombre, apellidos, fecha_nacimiento, genero, ciclo, curso, grupo FROM alumno WHERE nia= ?";
 
 		Alumno alumno = null;
